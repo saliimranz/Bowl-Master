@@ -31,6 +31,7 @@ public class Ball : MonoBehaviour
         inPlay = false;
         transform.position = ballStartPos;
         rigidBody.angularVelocity = Vector3.zero;
+        rigidBody.velocity = Vector3.zero;
         rigidBody.useGravity = false;
     }
     // Update is called once per frame

@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PinSetter : MonoBehaviour
 {
-    public Text standingDisplay;
-    private bool ballEnterBox;
-
     public int lastStandingCount = -1;
+    public Text standingDisplay;
+    public float distanceToRaise = 90f;
+
+    private bool ballEnterBox = false;
     private float lastChangeTime;
     private Ball ball;
     // Start is called before the first frame update
@@ -22,9 +23,7 @@ public class PinSetter : MonoBehaviour
         standingDisplay.text = CountStanding().ToString();
         if (ballEnterBox)
         {
-            Debug.Log("Check");
             checkStanding();
-            ballEnterBox = false;
         }
     }
 
@@ -39,7 +38,8 @@ public class PinSetter : MonoBehaviour
         }
 
         float settleTime = 3f;
-        if(Time.time - lastChangeTime > settleTime)
+        Debug.Log("There has been no change");
+        if((Time.time - lastChangeTime) > settleTime)
         {
             pinsHaveSettled();
             ball.Resetting();
@@ -47,6 +47,23 @@ public class PinSetter : MonoBehaviour
         }
     }
 
+    public void RaisePins()
+    {
+        //raise the pins above 40cm
+        foreach (Pins pin in GameObject.FindObjectsOfType<Pins>())
+        {
+            if (pin.isStanding())
+            { pin.transform.Translate(new Vector3(0, distanceToRaise, 0),Space.World); }
+        }
+    }
+    public void LowerPins()
+    {
+        //lower the pins above 40cm
+    }
+    public void RenewPins()
+    {
+        //renew the pins above 40cm
+    }
     void pinsHaveSettled()
     {
         lastStandingCount = -1; //indicates pins have settled , ball not back in box
