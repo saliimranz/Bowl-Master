@@ -52,13 +52,15 @@ public class PinSetter : MonoBehaviour
         //raise the pins above 40cm
         foreach (Pins pin in GameObject.FindObjectsOfType<Pins>())
         {
-            if (pin.isStanding())
-            { pin.transform.Translate(new Vector3(0, distanceToRaise, 0),Space.World); }
+            pin.RaiseIfStanding();
         }
     }
     public void LowerPins()
     {
-        //lower the pins above 40cm
+        foreach (Pins pin in GameObject.FindObjectsOfType<Pins>())
+        {
+            pin.Lower();
+        }
     }
     public void RenewPins()
     {

@@ -356,8 +356,10 @@
 "Assets/_Scripts/Ball.cs"
 "Assets/_Scripts/CameraControl.cs"
 "Assets/_Scripts/DragLaunch.cs"
+"Assets/_Scripts/OurScoreDisplayTest1.cs"
 "Assets/_Scripts/Pins.cs"
 "Assets/_Scripts/PinSetter.cs"
+"Assets/_Scripts/ScoreDisplay.cs"
 -langversion:9.0
 
 /deterministic
